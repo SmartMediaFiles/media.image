@@ -1,0 +1,71 @@
+# Set the project language
+*.go linguist-language=Go
+
+# Set default behavior for all files
+* text=auto eol=lf
+
+# Go source files
+*.go text eol=lf
+*.gomod text eol=lf
+*.gosum text eol=lf
+
+# Scripts
+*.sh text eol=lf
+*.bash text eol=lf
+
+# Configuration files
+*.yml text eol=lf
+*.yaml text eol=lf
+*.json text eol=lf
+*.toml text eol=lf
+*.ini text eol=lf
+*.conf text eol=lf
+
+# Documentation
+*.md text eol=lf
+*.txt text eol=lf
+LICENSE text eol=lf
+README text eol=lf
+
+# Web files
+*.html text eol=lf
+*.css text eol=lf
+*.js text eol=lf
+
+# Binary files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+
+# Go-specific files
+go.mod text eol=lf
+go.sum text eol=lf
+*.tmpl text eol=lf
+
+# Build and dependency files
+Makefile text eol=lf
+Dockerfile text eol=lf
+.gitignore text eol=lf
+.gitattributes text eol=lf
+
+# Test files
+*.test text eol=lf
+
+# Data files
+*.csv text eol=lf
+*.tsv text eol=lf
+*.sql text eol=lf
+
+# Editor configuration files
+.editorconfig text eol=lf
+
+# Ignore generated files in linguistic diffs
+generated/** linguist-generated=true
+vendor/** linguist-vendored=true
+
+# Ignore generated test files
+testdata/** linguist-generated=true
