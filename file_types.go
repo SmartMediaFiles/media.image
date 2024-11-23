@@ -1,7 +1,6 @@
 package media_image
 
 import (
-	"github.com/smartmediafiles/media/media/maps"
 	"github.com/smartmediafiles/media/media/types"
 )
 
@@ -17,14 +16,34 @@ const (
 	ImageWebp types.FileType = "webp" // Google WebP Image
 )
 
-// ImageFileTypesExtensions is a map of media.Image file types to their file extensions.
-var ImageFileTypesExtensions = maps.MapFileTypeExtensions{
-	ImageBmp:  {".bmp", ".dib"},
-	ImageGif:  {".gif"},
-	ImageHeic: {".heic"},
-	ImageHeif: {".heif"},
-	ImageJpeg: {".jpg", ".jpeg", ".jpe", ".jif", ".jfif", ".jfi"},
-	ImagePng:  {".png"},
-	ImageTiff: {".tiff", ".tif"},
-	ImageWebp: {".webp"},
+// ImageFileTypes is a list of supported media.Image file types.
+var ImageFileTypes = []types.FileType{
+	ImageBmp,
+	ImageGif,
+	ImageHeic,
+	ImageHeif,
+	ImageJpeg,
+	ImagePng,
+	ImageTiff,
+	ImageWebp,
+}
+
+// IsPhoto checks if the given file type is considered a photo.
+func IsPhoto(fileType types.FileType) bool {
+	switch fileType {
+	case ImageJpeg, ImageHeic, ImageHeif:
+		return true
+	default:
+		return false
+	}
+}
+
+// IsImage checks if the given file type is considered an image.
+func IsImage(fileType types.FileType) bool {
+	switch fileType {
+	case ImageBmp, ImageGif, ImagePng, ImageTiff, ImageWebp:
+		return true
+	default:
+		return false
+	}
 }
