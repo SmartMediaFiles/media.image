@@ -37,6 +37,8 @@ tasks:
     cmds:
       - echo "Formatting files..."
       - go fmt ./...
+      - goimports -w .
+      - editorconfig-checker
     silent: true
 
   vet:

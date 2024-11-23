@@ -13,10 +13,37 @@ tasks:
   install-all:
     desc: "Install or update all third-party tools"
     cmds:
+      - task: install-editorconfig-checker
       - task: install-golangci-lint
       - task: install-gosec
-      - task: install-editorconfig-cli
       - task: install-goimports
+      - task: check-versions
+
+  install-editorconfig-checker:
+    desc: "Install or update editorconfig-checker"
+    cmds:
+      - |
+        if command -v editorconfig-checker >/dev/null 2>&1; then
+          echo "Updating editorconfig-checker..."
+          go install github.com/editorconfig-checker/editorconfig-checker/v3/cmd/editorconfig-checker@latest
+        else
+          echo "Installing editorconfig-checker..."
+          go install github.com/editorconfig-checker/editorconfig-checker/v3/cmd/editorconfig-checker@latest
+        fi
+    silent: true
+
+  install-goimports:
+    desc: "Install or update goimports"
+    cmds:
+      - |
+        if command -v goimports >/dev/null 2>&1; then
+          echo "Updating goimports..."
+          go install golang.org/x/tools/cmd/goimports@latest
+        else
+          echo "Installing goimports..."
+          go install golang.org/x/tools/cmd/goimports@latest
+        fi
+    silent: true
 
   install-golangci-lint:
     desc: "Install or update golangci-lint"
@@ -44,19 +71,6 @@ tasks:
         fi
     silent: true
 
-  install-goimports:
-    desc: "Install or update goimports"
-    cmds:
-      - |
-        if command -v goimports >/dev/null 2>&1; then
-          echo "Updating goimports..."
-          go install golang.org/x/tools/cmd/goimports@latest
-        else
-          echo "Installing goimports..."
-          go install golang.org/x/tools/cmd/goimports@latest
-        fi
-    silent: true
-
   check-versions:
     desc: "Check versions of installed tools"
     cmds:
@@ -64,6 +78,5 @@ tasks:
       - task --version
       - golangci-lint --version
       - gosec --version
-      - editorconfig-cli --version
-      - goimports --version
+      - editorconfig-checker --version
     silent: true
